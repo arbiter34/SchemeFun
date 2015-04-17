@@ -1,0 +1,87 @@
+Lab Questions
+
+Question 1: Run this function as (f '(3 1 4 1 5 9)). What output do you get?
+Zero output unless using the command (display ()).  In that case the output is
+(4 2 5 2 6 10)
+
+
+Question 2: What does this function f do?
+The function recursively increments each element of a list starting with the first element
+then recursing on a the same list minus the first element.
+
+
+Question 3: Give a comment that explains the line following (a).
+If the list is null, do action.
+
+
+Question 4: Give a comment that explains the line following (b).
+Return empty list.
+
+
+Question 5: Give a comment that explains the line following (c).
+Construct a list with the first element of the list lst plus 1, and then the result of the recursion of the rest of the list minus the first element(which does the same thing, increments the first element and recurses on the rest).
+
+
+Question 6: Trace the call given in Question 1, showing each recursive call to the
+function. Specifically show each call, expanding the term lst to specific lists or atoms
+at each depth of the recursion.
+Initial call - (3 1 4 1 5 9)
+1st Recursion - (1 4 1 5 9)
+2nd Recursion - (4 1 5 9)
+3rd Recursion - (1 5 9)
+4th Recursion - (5 9)
+5th Recursion - (9)
+6th Recursion - ()
+Final Result - (4 2 5 2 6 10)
+
+Question 7: What output do you get for the call (member? 'one '(1 2 3 4))
+
+#f - not a member
+
+
+Question 8: Does your member? function use head or tail recursion?
+It uses head-recursion.
+
+
+Question 9: What output do you get for the call
+(set? '(it was the best of times, it was the worst of times))
+
+#f - bad set
+
+
+Question 10: Research tail recursion. Describe, in a few short sentences, why it
+can be beneficial to write tail recursing functions.
+
+In some languages tail recursive functions allow special compiler optimization which allows the re-use of a single function stack frame instead of creating a new stack frame for each recursion.
+This can save a substantial amount of memory and in fact can prevent stack overflows.
+
+Question 13: Name something you like about Scheme. Explain.
+
+It's rather fun once you get the hang of it.  Due to it's uniqueness, Scheme is challenging to read at first but it's also extremely powerful.
+
+Question 14: Name something you dislike about Scheme. Explain.
+
+It is extremely easy to mess up syntax in Scheme.  Due to the use of embedded parentheses it's very easy to mistakenly have one too many.
+
+
+Question 15: Did you enjoy this lab? Which aspects did you like and/or dislike?
+
+I enjoyed beginning to learn a new language that is different from any language I've used, but I can't say I'm a huge fan due to it's messy nature.
+
+Question 16: Approximately how many hours did you spend on this lab?
+
+.75 hours.
+
+Question 17: Do you think you will use Scheme again? For which type(s) of project(s)?
+
+Most likely not unless directed to by employment or school.
+
+Question EC1: Calling flatten ’(1 (2 3) 5) ’(8 (13 (21 34) 55)), what
+output do you get?
+
+(1 2 3 5 8 13 21 34 55)
+
+Question EC2: Describe, in a few English sentences, how your accomplished your list
+flattening.
+
+I first appended the two lists, so I could recurse on a single list.  In order to do this I need to check if the first list was no longer a list and just the first member of the previous list, if so I returned that member as a list, because I know after the first function call, the second list is empty.  Then I check if lst1 is null, if so return empty list.  I then check if lst1 is a pair(i.e. is there embedding), if not, I return lst1 as a list.  Else, I recurse on the first member of lst1(most likely another list) and recurse on the rest of the list and append the result.  Ultimately this is going member by member on the lists and flattening if necessary.
